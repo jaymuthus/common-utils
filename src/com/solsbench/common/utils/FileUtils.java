@@ -1,4 +1,4 @@
-package com.solutionsbench.common.utils;
+package com.solsbench.common.utils;
 
 import java.io.InputStream;
 
