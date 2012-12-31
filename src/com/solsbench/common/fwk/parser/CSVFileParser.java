@@ -1,5 +1,6 @@
 package com.solsbench.common.fwk.parser;
 
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,7 +10,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.sirahu.apptivo.common.logging.MessageLogger;
+import com.solsbench.common.log.Logger;
 
 /**
  * This interface specifies the methods to be implemented by any file parsers.
@@ -20,7 +21,7 @@ import com.sirahu.apptivo.common.logging.MessageLogger;
  * @version 1.0
  */
 public class CSVFileParser implements FileParser,java.io.Serializable {
-	private static final MessageLogger logger = MessageLogger.getLogger(CSVFileParser.class);
+	private static final Logger logger = Logger.getLogger(CSVFileParser.class);
 	public static final char DEFAULT_SEPERATOR = ',';
 	public static final char DEFAULT_TEXT_DELIMTER= '"';
 	public static final int pageSize = 1000;
