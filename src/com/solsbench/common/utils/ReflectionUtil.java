@@ -5,9 +5,20 @@ import java.util.List;
 
 import com.solsbench.common.log.Logger;
 
+/**
+ * 
+ * @author jaymuthus
+ *
+ */
 public class ReflectionUtil {
 	private static final Logger logger = Logger.getLogger(ReflectionUtil.class);
 	
+	/**
+	 * 
+	 * @param <T>
+	 * @param className
+	 * @return
+	 */
 	public static <T> Class<T> getClass(String className) {
 		Class<T> clazz = null;
 		try {
@@ -18,7 +29,14 @@ public class ReflectionUtil {
 		return clazz;
 	}
 	
+	/**
+	 * 
+	 * @param methodName
+	 * @param params
+	 * @return
+	 */
 	public static Method getMethod(String methodName, List<?> params){
+		
 		
 		return null;
 	}

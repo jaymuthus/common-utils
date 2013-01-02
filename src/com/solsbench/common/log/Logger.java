@@ -1,6 +1,5 @@
 package com.solsbench.common.log;
 
-
 public class Logger {
 	
 	public static Logger getLogger(Class className) {
