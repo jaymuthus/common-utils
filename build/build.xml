@@ -1,20 +1,22 @@
 <project name="common-utils" default="dist" basedir="..">
-    <description>common-utils</description>
+  <description>common-utils</description>
   <property name="src" location="src"/>
-  <property name="build" location="bin"/>
+  <property name="test" location="test"/>
+  <property name="bin" location="bin"/>
   <property name="dist"  location="dist"/>
 
   <target name="init">
     <!-- Create the time stamp -->
     <tstamp/>
     <!-- Create the build directory structure used by compile -->
-    <mkdir dir="${build}"/>
+    <mkdir dir="${bin}"/>
+  	<mkdir dir="${bin}/classes"/>
   </target>
 
   <target name="compile" depends="init"
         description="compile the source " >
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}"/>
+    <javac srcdir="${src}" destdir="${bin}/classes"/>
   </target>
 
   <target name="dist" depends="compile"
@@ -23,7 +25,7 @@
     <mkdir dir="${dist}/lib"/>
 
     <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-    <jar jarfile="${dist}/lib/common-utils-${DSTAMP}.jar" basedir="${build}"/>
+    <jar jarfile="${dist}/lib/common-utils-${DSTAMP}.jar" basedir="${bin}/classes"/>
   </target>
 
   <target name="clean"
