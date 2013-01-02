@@ -10,5 +10,4 @@ public class StringUtils {
 		return null == text ? text : text.trim();
 	}
 	
-	
 }
