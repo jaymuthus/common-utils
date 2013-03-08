@@ -1,5 +1,6 @@
 package com.solsbench.common.utils;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -12,15 +13,35 @@ import java.util.List;
  *
  */
 public class StringUtils {
-
+	
+	/**
+	 * isNull
+	 * 
+	 * @param text
+	 * @return boolean
+	 */
+	public static boolean isNull(String text) {
+		return null == text;
+	}
+	
+	/**
+	 * isNotNull
+	 * 
+	 * @param text
+	 * @return boolean
+	 */
+	public static boolean isNotNull(String text) {
+		return !isNull(text);
+	}
+	
 	/**
 	 * isEmpty
 	 * 
 	 * @param text
 	 * @return boolean
 	 */
-	public boolean isEmpty(String text) {
-		return null == text || "".equals(text);
+	public static boolean isEmpty(String text) {
+		return text != null && "".equals(text);
 	}
 	
 	/**
@@ -29,8 +50,28 @@ public class StringUtils {
 	 * @param text
 	 * @return boolean
 	 */
-	public boolean isNotEmpty(String text) {
+	public static boolean isNotEmpty(String text) {
 		return !isEmpty(text);
+	}
+
+	/**
+	 * isNullOrEmpty
+	 * 
+	 * @param text
+	 * @return boolean
+	 */
+	public static boolean isNullOrEmpty(String text) {
+		return text == null || "".equals(text);
+	}
+	
+	/**
+	 * isNotNullOrEmpty
+	 * 
+	 * @param text
+	 * @return boolean
+	 */
+	public static boolean isNotNullOrEmpty(String text) {
+		return !isNullOrEmpty(text);
 	}
 	
 	/**
@@ -39,7 +80,7 @@ public class StringUtils {
 	 * @param text
 	 * @return String
 	 */
-	public String trim(String text) {
+	public static String trim(String text) {
 		return null == text ? text : text.trim();
 	}
 	
@@ -49,7 +90,7 @@ public class StringUtils {
 	 * @param text
 	 * @return String
 	 */
-	public String trimToNull(String text) {
+	public static String trimToNull(String text) {
 		return null == text || "".equals(text) ? null : text.trim();
 	}
 	
@@ -59,7 +100,7 @@ public class StringUtils {
 	 * @param text
 	 * @return String
 	 */
-	public String trimToEmpty(String text) {
+	public static String trimToEmpty(String text) {
 		return null == text || "".equals(text) ? "" : text.trim();
 	}
 	
@@ -70,7 +111,7 @@ public class StringUtils {
 	 * @param text
 	 * @return String
 	 */
-	public String[] trim(String[] text) {
+	public static String[] trim(String[] text) {
 		if(text != null) {
 			for(int i=0; i<text.length; i++) {
 				text[i] = trim(text[i]);
@@ -85,7 +126,7 @@ public class StringUtils {
 	 * @param text
 	 * @return String
 	 */
-	public String[] trimToNull(String[] text) {
+	public static String[] trimToNull(String[] text) {
 		if(text != null) {
 			for(int i=0; i<text.length; i++) {
 				text[i] = trimToNull(text[i]);
@@ -100,7 +141,7 @@ public class StringUtils {
 	 * @param text
 	 * @return String
 	 */
-	public String[] trimToEmpty(String[] text) {
+	public static String[] trimToEmpty(String[] text) {
 		if(text != null) {
 			for(int i=0; i<text.length; i++) {
 				text[i] = trimToEmpty(text[i]);
@@ -111,11 +152,11 @@ public class StringUtils {
 	
 	/**
 	 * 
-	 * @param t
-	 * @return
+	 * @param t[]
+	 * @return List
 	 */
-	public List toArrayList(String t[]) {
-		List list = new ArrayList();
+	public static List<String> toArrayList(String t[]) {
+		List<String> list = new ArrayList<String>();
 		for(String t1 : t) {
 			list.add(t1);
 		}
@@ -128,8 +169,8 @@ public class StringUtils {
 	 * @param text
 	 * @return String
 	 */
-	public List trim(List text) {
-		List list = null;
+	public static List<String> trim(List<String> text) {
+		List<String> list = null;
 		if(text != null) {
 			String[] textArr = trim((String[])text.toArray(new String[text.size()]));
 			list = toArrayList(textArr);
@@ -143,8 +184,8 @@ public class StringUtils {
 	 * @param text
 	 * @return String
 	 */
-	public List trimToNull(List text) {
-		List list = null;
+	public static List<String> trimToNull(List<String> text) {
+		List<String> list = null;
 		if(text != null) {
 			String[] textArr = trimToNull((String[])text.toArray(new String[text.size()]));
 			list = toArrayList(textArr);
@@ -158,8 +199,8 @@ public class StringUtils {
 	 * @param text
 	 * @return String
 	 */
-	public List trimToEmpty(List text) {
-		List list = null;
+	public static List<String> trimToEmpty(List<String> text) {
+		List<String> list = null;
 		if(text != null) {
 			String[] textArr = trimToEmpty((String[])text.toArray(new String[text.size()]));
 			list = toArrayList(textArr);
@@ -170,7 +211,7 @@ public class StringUtils {
 	/**
 	 * 
 	 * @param e
-	 * @return
+	 * @return String
 	 */
     public static String toString(Exception e) {  
         StringWriter s = new StringWriter();  
@@ -188,4 +229,17 @@ public class StringUtils {
         return object.toString();   
     } 
     
+    /**
+     * extractFileName
+     * 
+     * @param absoluteFileName
+     * @return String
+     */
+    public static String extractFileName(String absoluteFileName) {  
+    	if (!isNullOrEmpty(absoluteFileName)) {  
+		  	absoluteFileName = absoluteFileName.substring(absoluteFileName.lastIndexOf(File.separatorChar) + 1, absoluteFileName.lastIndexOf("."));  
+		  
+		}  
+		return absoluteFileName;  
+	}  
 }
