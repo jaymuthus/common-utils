@@ -220,6 +220,37 @@ public class StringUtils {
     }  
     
     /**
+     * mergeStringArrays
+     * 
+     * @param array1
+     * @param array2
+     * @return String
+     */
+    public static String[] mergeStringArrays(String array1[], String array2[]) {  
+    	int length = 0;
+    	if(array1 != null) {
+    		length += array1.length;
+    	}
+    	
+    	if(array2 != null) {
+    		length += array2.length;
+    	}
+    	
+    	String[] array = new String[length];
+    	if(array1 != null) {
+    		System.arraycopy(array1, 0, array, 0,  array1.length);
+    	}
+    	
+    	if(array1 != null && array2 != null) {
+    		System.arraycopy(array2, 0, array, array1.length,  array2.length);
+    	} else {
+    		System.arraycopy(array2, 0, array, 0,  array2.length);
+    	}
+    	return array;
+    }
+    
+   
+    /**
      * toString
      * 
      * @param e
